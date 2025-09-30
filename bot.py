@@ -14,9 +14,11 @@ from telegram import (
     InlineKeyboardButton,
     InlineKeyboardMarkup,
     Message,
-    TelegramError,
     constants,
+    ChatMemberAdministrator,
+    ChatMemberOwner,
 )
+
 from telegram.constants import ParseMode, ChatMemberStatus, ChatType
 from telegram.ext import (
     Application,
@@ -28,7 +30,7 @@ from telegram.ext import (
     JobQueue,
     Job,
 )
-from telegram.error import BadRequest, Forbidden
+from telegram.error import TelegramError, BadRequest, Forbidden
 from sqlalchemy import (
     create_engine,
     Column,
@@ -40,7 +42,9 @@ from sqlalchemy import (
     Text,
     ForeignKey,
     and_,
+    UniqueConstraint
 )
+
 from sqlalchemy.orm import sessionmaker, declarative_base, Mapped, mapped_column, relationship
 from sqlalchemy.exc import SQLAlchemyError
 from dotenv import load_dotenv
@@ -3228,5 +3232,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
-```
